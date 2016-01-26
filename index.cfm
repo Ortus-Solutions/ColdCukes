@@ -12,7 +12,9 @@
     outputDir = expandPath(".") & '/tests/stubs/';
     
     // clear the directory so we have fresh files and delete out ones where the matching Gherkin feature file was deleted
-	DirectoryDelete( outputDir, true );
+    if (DirectoryExists( outputDir )) {
+		DirectoryDelete( outputDir, true );
+	}
 
     // loop through the directories and create TestBox Gherkin style BDD test file stubs 
     for (featureDir in arrDirectories) {
