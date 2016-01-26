@@ -4,8 +4,8 @@ ColdCukes is a ColdFusion/CFML project that parses Gherkin Feature files and cre
 ## Installation
 
 1. Clone this repo locally to your web root
-2. Run it locally at http://localhost/ColdCukes
-3. It should output which TestBox files were generated. You can look at them to see the magic.
+2. Run it locally from http://localhost/ColdCukes - you should be able to push the button and run it with no changes
+3. It should output which TestBox files were generated. You can look at them to see the magic. NOTE that if the test files were already there, it will seem like nothing changed
 
 
 ## Usage
@@ -29,7 +29,7 @@ ColdCukes is a ColdFusion/CFML project that parses Gherkin Feature files and cre
 1. Code reviews/suggestions welcome
 2. Ability to parse more complex Gherkin feature files *(NOTE: it doesn't even handle AND steps yet)*
 3. Ability to add more complex TestBox test stub files?
-4. A UI for picking which source files/directories, which directories the stub files go in, and other config options?
+4. Ability to choose other config options like tab characters and directory filters?
 
 ## Contributing
 
