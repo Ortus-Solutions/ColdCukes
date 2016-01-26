@@ -3,13 +3,18 @@ ColdCukes is a ColdFusion/CFML project that parses Gherkin Feature files and cre
 
 ## Installation
 
-1. Clone it locally to your web root
+1. Clone this repo locally to your web root
 2. Run it locally at http://localhost/ColdCukes
 3. It should output which TestBox files were generated. You can look at them to see the magic.
+
 
 ## Usage
 
 * see index.cfm
+
+1. If TestBox is set up locally, you can run any Unit Tests in the /tests/specs directory at http://localhost/ColdCukes-public/tests/runner.cfm
+2. Move/copy/merge stub files from /tests/stubs to /tests/specs in order to run them via the runner above
+3. Add new directories with new Gherkin *.feature files in /testData, and run http://localhost/ColdCukes again, to create new Unit Test stub files
 
 ## Gherkin Feature Files
 
