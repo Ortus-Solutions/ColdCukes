@@ -3,11 +3,13 @@ ColdCukes is a ColdFusion/CFML project that parses Gherkin Feature files and cre
 
 ## Installation
 
-TODO: Describe the installation process
+1. Clone it locally to your web root
+2. Run it locally at http://localhost/ColdCukes
+3. It should output which TestBox files were generated. You can look at them to see the magic.
 
 ## Usage
 
-TODO: Write usage instructions
+* see index.cfm
 
 ## Contributing
 
@@ -19,12 +21,14 @@ TODO: Write usage instructions
 
 ## History
 
-TODO: Write history
+* Version: Alpha 0.001 -- 2016-01-26
 
 ## Credits
 
-TODO: Write credits
+* Aaron Longnion
+* Fidano
+* TestBox from the ColdBox team
 
 ## License
 
-TODO: Write license
+MIT License: https://github.com/Fidano/ColdCukes/blob/master/LICENSE
