@@ -11,6 +11,21 @@ ColdCukes is a ColdFusion/CFML project that parses Gherkin Feature files and cre
 
 * see index.cfm
 
+## Gherkin Feature Files
+
+* see http://docs.behat.org/en/v2.5/guides/1.gherkin.html
+
+## TestBox BDD/Gherkin Test Files
+
+* Resulting files are in this basic format, depending on the *.feature files: https://github.com/Ortus-Solutions/TestBox/blob/master/tests/specs/GivenWhenThenTest.cfc
+
+## TODO List
+
+1. Code reviews/suggestions welcome
+2. Ability to parse more complex Gherkin feature files *(NOTE: it doesn't even handle AND steps yet)*
+3. Ability to add more complex TestBox test stub files?
+4. A UI for picking which source files/directories, which directories the stub files go in, and other config options?
+
 ## Contributing
 
 1. Fork it!
@@ -28,6 +43,7 @@ ColdCukes is a ColdFusion/CFML project that parses Gherkin Feature files and cre
 * Aaron Longnion
 * Fidano
 * TestBox from the ColdBox team
+* Cucumber/Gherkin - https://github.com/cucumber/gherkin
 
 ## License
 
