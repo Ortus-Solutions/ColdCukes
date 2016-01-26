@@ -9,7 +9,7 @@
     // grab just the ones we want to loop over, as an array
     arrDirectories = DirectoryList(parseDirectory, false, "array", "coldcukes*", "directory ASC");
     
-    outputDir = expandPath('/testbox/generator/tests/stubs/');
+    outputDir = expandPath(".") & '/tests/stubs/';
     
     // clear the directory so we have fresh files and delete out ones where the matching Gherkin feature file was deleted
 	DirectoryDelete( outputDir, true );
