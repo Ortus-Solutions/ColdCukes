@@ -25,7 +25,7 @@
 	    for (featureDir in arrDirectories) {
 	    	
 	    	// start using the ColdCukes obj for parsing
-		    obj = new testbox.generator.ColdCukes();
+		    obj = new ColdCukes();
 			obj.setFeaturesDirectory( featureDir );
 			obj.setOutputDirectory( outputDir );
 			

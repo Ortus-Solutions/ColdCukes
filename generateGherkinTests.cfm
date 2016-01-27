@@ -35,9 +35,9 @@
     for (dir in arrDirectory) {
     	
     	// start using the CC obj for parsing
-	    obj = new testbox.generator.ColdCukes();
+	    obj = new ColdCukes();
 		obj.setFeaturesDirectory( dir );
-		obj.setOutputDirectory( expandPath('/testbox/generator/tests/stubs/') );
+		obj.setOutputDirectory( expandPath('/tests/stubs/') );
 		//obj.setLineBreakCharacters( crlf );
 		//obj.setTabCharacters( tab );
 		
@@ -173,7 +173,7 @@
 
     writeOutput('<textarea cols="130" rows="55">#returnFileContents#</textarea>');
     
-    outputFile = expandPath('/testbox/generator/tests/specs') & "/ColdCukesTest2.cfc";
+    outputFile = expandPath('/tests/specs') & "/ColdCukesTest2.cfc";
     fileWrite(outputFile, returnFileContents);
 
     /*

@@ -12,7 +12,7 @@ function run(){
 					When( "I call the init() method", function(){
 						Then( "the object is initialized", function(){
 							// test code below
-
+							fail('test not implemented yet');
 						});
 					});
 				});
@@ -26,7 +26,7 @@ function run(){
 					When( "I call request 1 tab", function(){
 						Then( "1 tab is returned", function(){
 							// test code below
-
+							fail('test not implemented yet');
 						});
 					});
 				});
@@ -36,7 +36,7 @@ function run(){
 					When( "I call request 4 tabs", function(){
 						Then( "4 tabs are returned", function(){
 							// test code below
-
+							fail('test not implemented yet');
 						});
 					});
 				});

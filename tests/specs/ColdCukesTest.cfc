@@ -2,7 +2,7 @@ component extends="testbox.system.BaseSpec"{
 
 function beforeAll(){
 	// you may want to initialize the object you are testing here
-	obj = new testbox.generator.ColdCukes();
+	obj = new ColdCukes.ColdCukes();
 	obj.setLineBreakCharacters( chr(13) & chr(10) );
 	obj.setTabCharacters( chr(9) );
 }
@@ -16,7 +16,7 @@ function run(){
 					When( "I call the init() method", function(){
 						Then( "the object is initialized", function(){
 							// test code below
-							new testbox.generator.ColdCukes();
+							new ColdCukes.ColdCukes();
 
 						});
 					});

@@ -12,7 +12,7 @@ function run(){
 					When( "I call the set directory method", function(){
 						Then( "the directory is set", function(){
 							// test code below
-
+							fail('test not implemented yet');
 						});
 					});
 				});
@@ -22,7 +22,7 @@ function run(){
 					When( "I call the Get directory method", function(){
 						Then( "the directory is returned", function(){
 							// test code below
-
+							fail('test not implemented yet');
 						});
 					});
 				});
@@ -35,7 +35,7 @@ function run(){
 					When( "I call the set Line Break Characters method", function(){
 						Then( "the break is set", function(){
 							// test code below
-
+							fail('test not implemented yet');
 						});
 					});
 				});
@@ -45,7 +45,7 @@ function run(){
 					When( "I call the Get Line Break Characters method", function(){
 						Then( "the break is returned", function(){
 							// test code below
-
+							fail('test not implemented yet');
 						});
 					});
 				});
@@ -58,7 +58,7 @@ function run(){
 					When( "I call the set Tab Characters method", function(){
 						Then( "the Tab is set", function(){
 							// test code below
-
+							fail('test not implemented yet');
 						});
 					});
 				});
@@ -68,7 +68,7 @@ function run(){
 					When( "I call the Get Tab Characters method", function(){
 						Then( "the Tab is returned", function(){
 							// test code below
-
+							fail('test not implemented yet');
 						});
 					});
 				});
@@ -81,7 +81,7 @@ function run(){
 					When( "I call the writeTestBoxCFCBegin() method", function(){
 						Then( "the proper CFC code is returned", function(){
 							// test code below
-
+							fail('test not implemented yet');
 						});
 					});
 				});

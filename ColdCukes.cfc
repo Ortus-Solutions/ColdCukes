@@ -183,7 +183,8 @@ component
 	            thenString &= nTabs(1);
 	            thenString &= keyword;
 	            thenString &= '( "#step.getText()#", function(){' & nBreaks(1);
-	            thenString &= nTabs(7) & "// test code below" & nBreaks(2);
+	            thenString &= nTabs(7) & "// test code below" & nBreaks(1);
+	            thenString &= nTabs(7) & "fail('test not implemented yet');" & nBreaks(1);
 	            thenString &= nTabs(6);
 	            thenString &= '});';
 	

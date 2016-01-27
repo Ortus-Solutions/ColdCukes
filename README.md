@@ -45,6 +45,7 @@ ColdCukes is a ColdFusion/CFML project that parses Gherkin Feature files and cre
 ## History
 
 * Version: Alpha 0.001 -- 2016-01-26
+* Version: Alpha 0.002 -- 2016-01-27
 
 ## Credits
 
