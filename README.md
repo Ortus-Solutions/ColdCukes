@@ -1,12 +1,15 @@
 # ColdCukes
 ColdCukes is a ColdFusion/CFML project that parses Gherkin Feature files and creates associated TestBox BDD Unit Test files
 
+## Diagram
+
+![Diagram of ColdCukes in Action](/assets/images/CukesDiagram2.png)
+
 ## Installation
 
 1. Clone this repo locally to your web root
 2. Run it locally from http://localhost/ColdCukes - you should be able to push the button and run it with no changes
 3. It should output which TestBox files were generated. You can look at them to see the magic. NOTE that if the test files were already there, it will seem like nothing changed
-
 
 ## Usage
 
