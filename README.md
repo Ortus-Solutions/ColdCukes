@@ -5,6 +5,12 @@ ColdCukes is a ColdFusion/CFML project that parses Gherkin Feature files and cre
 
 ![Diagram of ColdCukes in Action](/assets/images/CukesDiagram2.png)
 
+## Requirements
+
+* only verified on Adobe CF 10
+* only verified on Window 7
+* tested with TestBox 2.2, which is required to run the generated tests
+
 ## Installation
 
 1. Clone this repo locally to your web root
@@ -33,6 +39,11 @@ ColdCukes is a ColdFusion/CFML project that parses Gherkin Feature files and cre
 2. Ability to parse more complex Gherkin feature files *(NOTE: it doesn't even handle AND steps yet)*
 3. Ability to add more complex TestBox test stub files?
 4. Ability to choose other config options like tab characters and directory filters?
+5. Test in Lucee
+6. Test in Railo
+7. Test in Adobe ColdFusion 8-9, and 11
+8. Test on Linux
+9. Text on Mac
 
 ## Contributing
 
