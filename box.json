@@ -1,0 +1,91 @@
+{
+    "name":"ColdCukes",
+    "version":"0.0.1",
+    "author":"Aaron Longnion <aqlong>",
+    "location":"",
+    "directory":"",
+    "createPackageDirectory":true,
+    "packageDirectory":"",
+    "homepage":"https://github.com/Fidano/ColdCukes",
+    "documentation":"https://github.com/Fidano/ColdCukes",
+    "repository":{
+        "type":"git",
+        "URL":"https://github.com/Fidano/ColdCukes"
+    },
+    "bugs":"https://github.com/Fidano/ColdCukes/issues",
+    "slug":"coldcukes",
+    "shortDescription":"ColdCukes is a ColdFusion/CFML project that parses Gherkin Feature files and creates associated TestBox BDD Unit Test files.",
+    "description":"ColdCukes is a ColdFusion/CFML project that parses Gherkin Feature files and creates associated TestBox BDD Unit Test files.",
+    "instructions":"",
+    "changelog":"",
+    "type":"modules",
+    "keywords":[
+        "testing",
+        "gherkin"
+    ],
+    "private":false,
+    "engines":[
+        {
+            "type":"Lucee",
+            "version":"4.5.*"
+        },
+        {
+            "type":"ACF",
+            "version":"10"
+        }
+    ],
+    "license":[
+        {
+            "type":"MIT",
+            "URL":"https://github.com/Fidano/ColdCukes/blob/master/LICENSE"
+        }
+    ],
+    "contributors":[
+        "Eric Peterson <elpete>"
+    ],
+    "dependencies":{
+        "cbjavaloader":"1.0.0"
+    },
+    "devDependencies":{
+        "testbox":"2.2.0"
+    },
+    "installPaths":{
+        "testbox":"testbox",
+        "cbjavaloader":"modules/cbjavaloader"
+    },
+    "ignore":[
+        "**/.*",
+        "test",
+        "tests",
+        "testData"
+    ],
+    "testbox":{
+        "runner":[
+            {
+                "default":"http://localhost:9898/tests/runner.cfm"
+            }
+        ],
+        "labels":[
+            
+        ],
+        "reporter":"",
+        "reporterResults":"",
+        "bundles":[
+            ""
+        ],
+        "directory":{
+            "mapping":"",
+            "recurse":true
+        },
+        "watchers":[
+            
+        ],
+        "notify":{
+            "emails":[
+                
+            ],
+            "growl":"",
+            "URL":""
+        }
+    }
+}
