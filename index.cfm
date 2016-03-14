@@ -81,12 +81,12 @@
 		    	
 		    	<div class="form-group">
 		    		<label for="featuresDir">Feature Directory</label>
-		    		<input type="text" class="form-control" id="featuresDir" value="#form.featuresDir#" placeholder="#expandPath('.')#/features">
+		    		<input type="text" class="form-control" id="featuresDir" name="featuresDir" value="#form.featuresDir#" placeholder="#expandPath('.')#/features">
 		    	</div>
 		    	
 		    	<div class="form-group">
 		    		<label for="outputDir">Output Directory</label>
-		    		<input type="text" class="form-control" id="outputDir" value="#outputDir#" placeholder="#expandPath('.')#/stubs">
+		    		<input type="text" class="form-control" id="outputDir" name="outputDir" value="#outputDir#" placeholder="#expandPath('.')#/stubs">
 		    	</div>
 		    	
 		    	<button type="submit" class="btn btn-primary">Generate Gherkin Stubs</button>
