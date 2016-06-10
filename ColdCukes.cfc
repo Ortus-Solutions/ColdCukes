@@ -9,7 +9,7 @@ component
 	public ColdCukes function init(
         AstBuilderObj = createObject("Java", "gherkin.AstBuilder"),
         GherkinParser = createObject("Java", "gherkin.Parser")
-    ) output="false"
+    ) 
 	{
 		// the Gherkin JAR files must be in the CF lib directory; this sets up our parser for gherkin Features files
     	instance.parserObj = GherkinParser.init( AstBuilderObj.init() );
@@ -17,63 +17,63 @@ component
 	}
 
 	// directory where feature files are stored
-	public void function setFeaturesDirectory(required string dir) output="false"
+	public void function setFeaturesDirectory(required string dir)
 	{
 		instance.FeaturesDirectory = arguments.dir;
 	}
 
-	public string function getFeaturesDirectory() output="false"
+	public string function getFeaturesDirectory()
 	{
 		return instance.FeaturesDirectory;
 	}
 
 	// directory where BDD Test stub files are created
-	public void function setOutputDirectory(required string dir) output="false"
+	public void function setOutputDirectory(required string dir)
 	{
 		instance.OutputDirectory = arguments.dir;
 	}
 
-	public string function getOutputDirectory() output="false"
+	public string function getOutputDirectory()
 	{
 		return instance.OutputDirectory;
 	}
 
 	// tab or spaces characters, depending on your code preferences
-	public void function setTabCharacters(required string tab) output="false"
+	public void function setTabCharacters(required string tab)
 	{
 		instance.TabCharacters = arguments.tab;
 	}
 
-	public string function getTabCharacters() output="false"
+	public string function getTabCharacters()
 	{
 		return instance.TabCharacters;
 	}
 
 	// line break characters, depending on your code preferences
-	public void function setLineBreakCharacters(required string crlf) output="false"
+	public void function setLineBreakCharacters(required string crlf)
 	{
 		instance.LineBreakCharacters = arguments.crlf;
 	}
 
-	public string function getLineBreakCharacters() output="false"
+	public string function getLineBreakCharacters()
 	{
 		return instance.LineBreakCharacters;
 	}
 
 	// get N number of tabs
-	public string function nTabs(required numeric num) output="false"
+	public string function nTabs(required numeric num)
 	{
 		return RepeatString( getTabCharacters(), arguments.num );
 	}
 
 	// get N number of breaks
-	public string function nBreaks(required numeric num) output="false"
+	public string function nBreaks(required numeric num)
 	{
 		return RepeatString( getLineBreakCharacters(), arguments.num );
 	}
 
 	// begin TestBox CFC
-	public string function writeTestBoxCFCBegin() output="false"
+	public string function writeTestBoxCFCBegin()
 	{
 		var str = '';
 		str &= 'component extends="testbox.system.BaseSpec"{' & nBreaks(2);
@@ -86,7 +86,7 @@ component
 	}
 
 	// end TestBox CFC
-	public string function writeTestBoxCFCEnd() output="false"
+	public string function writeTestBoxCFCEnd()
 	{
 		var str = '';
 		str &= '} //end run()' & nBreaks(2);
@@ -96,7 +96,7 @@ component
 	}
 
 	// begin Feature
-	public string function writeFeatureBegin(required any feature) output="false"
+	public string function writeFeatureBegin(required any feature)
 	{
 		var str = '';
 		str &= nTabs(1) & arguments.feature.getKeyword();
@@ -110,7 +110,7 @@ component
 	}
 
 	// end Feature
-	public string function writeFeatureEnd(required any feature) output="false"
+	public string function writeFeatureEnd(required any feature)
 	{
 		var str = '';
 		if ( Len(arguments.feature.getDescription()) ){
@@ -122,7 +122,7 @@ component
 	}
 
 	// begin Scenario
-	public string function writeScenarioBegin(required any Scenario) output="false"
+	public string function writeScenarioBegin(required any Scenario)
 	{
 		var str = '';
 		str &= nTabs(3) & arguments.scenario.getKeyword();
@@ -132,7 +132,7 @@ component
 	}
 
 	// end Scenario
-	public string function writeScenarioEnd() output="false"
+	public string function writeScenarioEnd()
 	{
 		var str = nTabs(3) & '});' & nBreaks(1);
 
@@ -140,13 +140,14 @@ component
 	}
 
 	// step string
-	public string function writeSteps( required any steps ) output="false"
+	public string function writeSteps( required any steps )
 	{
 		var stepsString = "";
 
-		// TODO: add support for the AND steps keywords
-
+		var i = 0;
 		for (var step in arguments.steps) {
+			// iterate the steps
+			i++;
 
 			var keyword = step.getKeyword().trim();
 
@@ -159,9 +160,31 @@ component
 	            stepsString &= nTabs(4);
 	            stepsString &= keyword;
 	            stepsString &= '( "#step.getText()#", function(){' & nBreaks(1);
-	            stepsString &= nTabs(4) & "[[When_here]]" & nBreaks(1);
+	            stepsString &= nTabs(4) & "[[replace_here]]" & nBreaks(1);
 	            stepsString &= nTabs(4);
 	            stepsString &= '});' & nBreaks(1);
+
+	            // loop from next step on until the step keyword is NOT Given or And
+				for (var j=i+1;j LTE ArrayLen(arguments.steps);j++) {
+					var nextStep = arguments.steps[j];
+	            	var nextStepKeyword = nextStep.getKeyword().trim();
+
+				 	if (ListFindNoCase("and,given", nextStepKeyword)) {
+				 		// WriteOutput(nextStepKeyword & ": " & nextStep.getText() & "<br>");
+
+				 		var subStepsString = '';
+			            subStepsString &= 'Given';
+			            subStepsString &= '( "#nextStep.getText()#", function(){' & nBreaks(1);
+			            subStepsString &= nTabs(4) & "[[replace_here]]" & nBreaks(1);
+			            subStepsString &= nTabs(4);
+			            subStepsString &= '});';
+
+			            stepsString = Replace(stepsString, "[[replace_here]]", subStepsString);
+
+			 		} else {
+				 		break;
+				 	}
+				}
 
 	        }
 
@@ -170,12 +193,33 @@ component
 	            whenString &= nTabs(1);
 	            whenString &= keyword;
 	            whenString &= '( "#step.getText()#", function(){' & nBreaks(1);
-	            whenString &= nTabs(5) & "[[Then_here]]" & nBreaks(1);
+	            whenString &= nTabs(5) & "[[replace_here]]" & nBreaks(1);
 	            whenString &= nTabs(5);
 	            whenString &= '});';
 
-				// replace the string set in the GIVEN section with the WHEN block we just created
-	            stepsString = Replace(stepsString, "[[When_here]]", whenString);
+	            // replace the string set in the GIVEN section with the WHEN block we just created
+	            stepsString = Replace(stepsString, "[[replace_here]]", whenString);
+
+	            for (var k=i+1;j LTE ArrayLen(arguments.steps);k++) {
+					var nextStep = arguments.steps[k];
+	            	var nextStepKeyword = nextStep.getKeyword().trim();
+
+				 	if (ListFindNoCase("and,when", nextStepKeyword)) {
+
+				 		var subWhenString = '';
+			            subWhenString &= 'When';
+			            subWhenString &= '( "#nextStep.getText()#", function(){' & nBreaks(1);
+			            subWhenString &= nTabs(5) & "[[replace_here]]" & nBreaks(1);
+			            subWhenString &= nTabs(5);
+			            subWhenString &= '});';
+
+			            stepsString = Replace(stepsString, "[[replace_here]]", subWhenString);
+
+			 		} else {
+				 		break;
+				 	}
+				}
+
 	        }
 
 	        if (keyword EQ "Then") {
@@ -188,8 +232,44 @@ component
 	            thenString &= nTabs(6);
 	            thenString &= '});';
 
+				// add this only if we are NOT on the last step
+	            if (i LT ArrayLen(arguments.steps)) {
+	            	thenString &= nBreaks(1) & "[[replace_here]]";
+	            }
+
 	            // replace the string set in the WHEN section with the THEN block we just created
-	            stepsString = Replace(stepsString, "[[Then_here]]", thenString);
+	            stepsString = Replace(stepsString, "[[replace_here]]", thenString);
+
+	            //writedump(ArrayLen(arguments.steps));abort;
+
+	            for (var n=i+1;j LTE ArrayLen(arguments.steps);n++) {
+
+					if (n GT ArrayLen(arguments.steps)) {
+						break;
+					} else {
+
+						var nextStep = arguments.steps[n];
+		            	var nextStepKeyword = nextStep.getKeyword().trim();
+
+					 	if (ListFindNoCase("and,then", nextStepKeyword)) {
+
+					 		var subThenString = '';
+
+				            subThenString &= nTabs(6) & 'Then';
+				            subThenString &= '( "#nextStep.getText()#", function(){' & nBreaks(1);
+				            subThenString &= nTabs(7) & "// test code below" & nBreaks(1);
+				            subThenString &= nTabs(7) & "fail('test not implemented yet');" & nBreaks(1);
+				            subThenString &= nTabs(6);
+				            subThenString &= '});';
+
+				            stepsString = Replace(stepsString, "[[replace_here]]", subThenString);
+
+				 		} else {
+					 		break;
+					 	}
+
+				 	}
+				}
 	        }
 
         }
@@ -198,13 +278,13 @@ component
 	}
 
 	// list the Feature files
-	public array function listFeatureFiles() output="false"
+	public array function listFeatureFiles()
 	{
 		return DirectoryList( getFeaturesDirectory() );
 	}
 
 	// this is the workhorse that creates the Gherkin-style BDD testbox files based on the static feature files
-	public string function generateGherkinTests() output="false"
+	public string function generateGherkinTests()
 	{
 		var strBegin = writeTestBoxCFCBegin();
 		var strEnd = writeTestBoxCFCEnd();
@@ -213,6 +293,11 @@ component
 
 		// BEGIN features loop
 		for (var featureFile in featureFiles) {
+
+			// break out of the loop if it's not a feature file
+			if (listLast(featureFile,".") NEQ "feature") {
+				continue;
+			}
 
 			// grab the feature file and use the Java objects to parse it
 			var fileText = fileRead(featureFile);
@@ -267,7 +352,7 @@ component
 	}
 
 
-	public string function writeTestBoxFile(required string fileContents) output="false"
+	public string function writeTestBoxFile(required string fileContents)
 	{
 		// set the file name dynamically
 		var filePathAndName = getOutputDirectory() & ListLast(getFeaturesDirectory(), "/\") & "Test.cfc";
